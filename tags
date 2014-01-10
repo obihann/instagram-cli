@@ -7,4 +7,6 @@
 complete	./bin/index.coffee	/^    complete: (photos) ->$/;"	f	lineno:9	object:window	type:function
 parseImages	src/index.coffee	/^parseImages = (photos, pagination) ->$/;"	f
 renderImage	bin/index.coffee	/^renderImage = (url, author, dateStr) ->$/;"	f
-renderImage	src/index.coffee	/^renderImage = (url, author, dateStr) ->$/;"	f
+renderImage	src/index.coffee	/^renderImage = (url, author, dateStr, link) ->$/;"	f
+searchPublic	src/index.coffee	/^searchPublic = () ->$/;"	f
+searchUser	src/index.coffee	/^searchUser = (user) ->$/;"	f
