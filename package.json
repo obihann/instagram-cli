@@ -2,7 +2,7 @@
   "name": "Instagram",
   "version": "0.0.0",
   "description": "A Node.js CLI tool to display your Instagram feed via ASCII art.",
-  "main": "app/index.js",
+  "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,6 @@
     "instagram-node-lib": "~0.1.1",
     "underscore": "~1.5.2",
     "jp2a": "~0.2.0",
-    "fuzzytime.js": "~1.0.0-beta2",
     "moment": "~2.5.0"
   }
 }
