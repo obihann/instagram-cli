@@ -1,0 +1,8 @@
+!_TAG_FILE_FORMAT	2	/extended format/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Łukasz Korecki /lukasz@coffeesounds.com/
+!_TAG_PROGRAM_NAME	CoffeeTags	//
+!_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
+!_TAG_PROGRAM_VERSION	0.1.3	//
+complete	./bin/index.coffee	/^    complete: (photos) ->$/;"	f	lineno:9	object:window	type:function
+renderImage	bin/index.coffee	/^renderImage = (url, author, dateStr) ->$/;"	f
