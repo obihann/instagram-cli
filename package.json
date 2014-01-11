@@ -12,6 +12,8 @@
     "instagram-node-lib": "~0.1.1",
     "underscore": "~1.5.2",
     "jp2a": "~0.2.0",
-    "moment": "~2.5.0"
+    "moment": "~2.5.0",
+    "request": "~2.31.0",
+    "express": "~3.4.7"
   }
 }
