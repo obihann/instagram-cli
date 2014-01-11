@@ -13,29 +13,6 @@ streamToWeb = () ->
     app.get "/", (req, res) ->
         request.get "http://localhost:3131/", (error, response, body) ->
             if !error && response.statusCode == 200
-                res.writeHeader 200, {"Content-Type": "text/html"}
-                res.write "<div class='ascii' style='font-size: 8px;'>"
-               
-                data = JSON.parse body
-                
-                _.each data, (photo, index) ->
-                    url =  photo.images.standard_resolution.url
-
-                    renderHtml url, (resp) ->
-                        res.write "<div style='float: left;'><pre>"
-                        res.write resp
-                        res.write "</pre></div>"
-
-                    if index == data.length
-                        res.write "</div>"
-                        res.end() 
-
-    app.listen(8888)
-
-streamUserToWeb = () ->
-    app.get "/", (req, res) ->
-        request.get "http://localhost:3131/?name="+process.argv[3], (error, response, body) ->
-            if !error && response.statusCode == 200
                 #res.writeHeader 200, {"Content-Type": "text/html"}
                 data = JSON.parse body
 
@@ -43,6 +20,28 @@ streamUserToWeb = () ->
                     res.send output
 
     app.listen(8888)
+
+streamUserToWeb = () ->
+    app.get "/", (req, res) ->
+        request.get "http://localhost:3131/?name="+process.argv[3], (error, response, body) ->
+            if !error && response.statuscode == 200
+                #res.writeheader 200, {"content-type": "text/html"}
+                data = json.parse body
+
+                parseforweb data, (output) ->
+                    res.send output
+
+    app.listen(8888)
+
+searchPublic = () ->
+    request.get "http://localhost:3131/", (error, response, body) ->
+        data = JSON.parse body
+        parseImages data
+
+searchUser = (user) ->
+    request.get "http://localhost:3131/?user="+user, (error, response, body) ->
+        data = JSON.parse body
+        parseImages data
 
 parseForWeb = (data, cb) ->
     output = "<div class='ascii' style='font-size: 8px;'>"
@@ -60,6 +59,23 @@ parseForWeb = (data, cb) ->
                 output += "</div>"
                 cb output
 
+parseImages = (photos) ->
+    _.each photos, (photo) ->
+        author = photo.user.username
+        url =  photo.images.standard_resolution.url
+        dateStr = moment(photo.created_time).fromNow()
+        link = photo.link
+        renderImage url, author, dateStr, link
+
+renderImage = (url, author, dateStr, link) ->
+    jp2a  [url, "--width=75", "--background=dark", "--color", "-b"], (asciiArt) ->
+        console.log asciiArt
+        console.log link
+        console.log "By: " + author
+        console.log dateStr
+
 switch process.argv[2]
     when "web" then streamToWeb()
     when "webUser" then streamUserToWeb()
+    when "user" then searchUser process.argv[3]
+    else searchPublic()
