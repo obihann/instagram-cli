@@ -10,16 +10,32 @@
 
   app = express();
 
-  Instagram.set('client_id', 'b8b6e83a5194471d936670c484375a5d');
+  Instagram.set('client_id', process.env.INSTAGRAMID);
 
-  Instagram.set('client_secret', '7a56b096833d41ff98f55369c837ef0d');
+  Instagram.set('client_secret', process.env.INSTAGRAMSECRET);
 
-  app.get('/public', function(req, res) {
-    return Instagram.media.popular({
-      complete: function(data, pagination) {
-        return res.send(data);
-      }
-    });
+  app.get('/', function(req, res) {
+    var name;
+    name = req.query.name;
+    if (name) {
+      return Instagram.users.search({
+        q: name,
+        complete: function(data, pagination) {
+          return Instagram.users.recent({
+            user_id: data[0].id,
+            complete: function(data, pagination) {
+              return res.send(data);
+            }
+          });
+        }
+      });
+    } else {
+      return Instagram.media.popular({
+        complete: function(data, pagination) {
+          return res.send(data);
+        }
+      });
+    }
   });
 
   app.listen(3131);

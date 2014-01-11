@@ -3,23 +3,26 @@ Instagram = require 'instagram-node-lib'
 express = require 'express'
 app = express()
 
-Instagram.set 'client_id', 'b8b6e83a5194471d936670c484375a5d'
-Instagram.set 'client_secret', '7a56b096833d41ff98f55369c837ef0d'
+Instagram.set 'client_id', process.env.INSTAGRAMID
+Instagram.set 'client_secret', process.env.INSTAGRAMSECRET
 
-app.get '/public', (req, res) ->
-    Instagram.media.popular {
-        complete: (data, pagination) ->
-            res.send data
-    }
+app.get '/', (req, res) ->
+    name = req.query.name
 
-#searchUser = (user) ->
-    #Instagram.users.search {
-        #q: user,
-        #complete: (data, pagination) ->
-            #Instagram.users.recent {
-                #user_id: data[0].id,
-                #complete: parseImages
-            #}
-    #}
-    #
+    if name
+        Instagram.users.search {
+            q: name,
+            complete: (data, pagination) ->
+                Instagram.users.recent {
+                    user_id: data[0].id,
+                    complete: (data, pagination) ->
+                        res.send data
+                }
+        }
+    else
+        Instagram.media.popular {
+            complete: (data, pagination) ->
+                res.send data
+        }
+
 app.listen 3131
