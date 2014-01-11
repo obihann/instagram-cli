@@ -8,7 +8,9 @@ app	src/index.coffee	/^app = express()$/;"	v
 complete	./bin/index.coffee	/^    complete: (photos) ->$/;"	f	lineno:9	object:window	type:function
 data	src/index.coffee	/^                data = JSON.parse body$/;"	v
 express	src/index.coffee	/^express = require 'express'$/;"	v
+parseForWeb	src/index.coffee	/^parseForWeb = (data, cb) ->$/;"	f
 renderHtml	src/index.coffee	/^renderHtml = (url, cb) ->$/;"	f
 renderImage	bin/index.coffee	/^renderImage = (url, author, dateStr) ->$/;"	f
 request	src/index.coffee	/^request = require 'request'$/;"	v
 streamToWeb	src/index.coffee	/^streamToWeb = () ->$/;"	f
+streamUserToWeb	src/index.coffee	/^streamUserToWeb = () ->$/;"	f
