@@ -95,13 +95,25 @@ A Node.js CLI tool to display your Instagram feed via ASCII art. Inspired by [in
     a few seconds ago
     
 ##Usage
-* By default you can view the latest public feed
+###Public Feeds
 
     node bin/index.js
-    
-* You can also view the images of a spefici user with the 'user' command
+
+###User Feeds
 
     node bin/index.js user obihann
+    
+###Web Feeds
+
+    node bin/index.js web
+    
+Then view 'http://localhost:8888/'
+    
+###Web User Feeds
+
+    node bin/index.js webUser obihann
+    
+Then view 'http://localhost:8888/'
 
 ##ToDo
 * Allow users to view their feeds, not just the latest public feed
