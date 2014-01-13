@@ -11,7 +11,7 @@ renderHtml = (url, cb) ->
 
 streamToWeb = () ->
     app.get "/", (req, res) ->
-        request.get "http://localhost:3131/", (error, response, body) ->
+        request.get "http://keepiteasy.net:3131/", (error, response, body) ->
             if !error && response.statusCode == 200
                 #res.writeHeader 200, {"Content-Type": "text/html"}
                 data = JSON.parse body
@@ -23,7 +23,7 @@ streamToWeb = () ->
 
 streamUserToWeb = () ->
     app.get "/", (req, res) ->
-        request.get "http://localhost:3131/?name="+process.argv[3], (error, response, body) ->
+        request.get "http://keepiteasy.net:3131/?name="+process.argv[3], (error, response, body) ->
             if !error && response.statuscode == 200
                 #res.writeheader 200, {"content-type": "text/html"}
                 data = json.parse body
@@ -34,12 +34,12 @@ streamUserToWeb = () ->
     app.listen(8888)
 
 searchPublic = () ->
-    request.get "http://localhost:3131/", (error, response, body) ->
+    request.get "http://keepiteasy.net:3131/", (error, response, body) ->
         data = JSON.parse body
         parseImages data
 
 searchUser = (user) ->
-    request.get "http://localhost:3131/?user="+user, (error, response, body) ->
+    request.get "http://keepiteasy.net:3131/?user="+user, (error, response, body) ->
         data = JSON.parse body
         parseImages data
 

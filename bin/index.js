@@ -22,7 +22,7 @@
 
   streamToWeb = function() {
     app.get("/", function(req, res) {
-      return request.get("http://localhost:3131/", function(error, response, body) {
+      return request.get("http://keepiteasy.net:3131/", function(error, response, body) {
         var data;
         if (!error && response.statusCode === 200) {
           data = JSON.parse(body);
@@ -37,7 +37,7 @@
 
   streamUserToWeb = function() {
     app.get("/", function(req, res) {
-      return request.get("http://localhost:3131/?name=" + process.argv[3], function(error, response, body) {
+      return request.get("http://keepiteasy.net:3131/?name=" + process.argv[3], function(error, response, body) {
         var data;
         if (!error && response.statuscode === 200) {
           data = json.parse(body);
@@ -51,7 +51,7 @@
   };
 
   searchPublic = function() {
-    return request.get("http://localhost:3131/", function(error, response, body) {
+    return request.get("http://keepiteasy.net:3131/", function(error, response, body) {
       var data;
       data = JSON.parse(body);
       return parseImages(data);
@@ -59,7 +59,7 @@
   };
 
   searchUser = function(user) {
-    return request.get("http://localhost:3131/?user=" + user, function(error, response, body) {
+    return request.get("http://keepiteasy.net:3131/?user=" + user, function(error, response, body) {
       var data;
       data = JSON.parse(body);
       return parseImages(data);
