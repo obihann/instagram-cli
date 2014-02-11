@@ -32,7 +32,8 @@
         }
       });
     });
-    return app.listen(8888);
+    app.listen(8888);
+    return console.log("Check out http://localhost:8888 to view your feed");
   };
 
   streamUserToWeb = function() {
@@ -47,7 +48,8 @@
         }
       });
     });
-    return app.listen(8888);
+    app.listen(8888);
+    return console.log("Check out http://localhost:8888 to view your feed");
   };
 
   searchPublic = function() {
@@ -97,7 +99,7 @@
   };
 
   renderImage = function(url, author, dateStr, link) {
-    return jp2a([url, "--width=75", "--background=dark", "--color", "-b"], function(asciiArt) {
+    return jp2a([url, "--color", "-b", "--truecolor", "--fill"], function(asciiArt) {
       console.log(asciiArt);
       console.log(link);
       console.log("By: " + author);

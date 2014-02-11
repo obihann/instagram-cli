@@ -20,6 +20,7 @@ streamToWeb = () ->
                     res.send output
 
     app.listen(8888)
+    console.log "Check out http://localhost:8888 to view your feed"
 
 streamUserToWeb = () ->
     app.get "/", (req, res) ->
@@ -32,6 +33,7 @@ streamUserToWeb = () ->
                     res.send output
 
     app.listen(8888)
+    console.log "Check out http://localhost:8888 to view your feed"
 
 searchPublic = () ->
     request.get "http://keepiteasy.net:3131/", (error, response, body) ->
@@ -68,7 +70,7 @@ parseImages = (photos) ->
         renderImage url, author, dateStr, link
 
 renderImage = (url, author, dateStr, link) ->
-    jp2a  [url, "--width=75", "--background=dark", "--color", "-b"], (asciiArt) ->
+    jp2a  [url, "--color", "-b", "--truecolor", "--fill"], (asciiArt) ->
         console.log asciiArt
         console.log link
         console.log "By: " + author
