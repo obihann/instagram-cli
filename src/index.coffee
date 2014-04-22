@@ -25,4 +25,6 @@ app.get '/', (req, res) ->
                 res.send data
         }
 
-app.listen 3131
+port = process.env.PORT || 3131
+app.listen port, () ->
+    console.log('Listening on ' + port)
