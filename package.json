@@ -1,6 +1,6 @@
 {
-  "name": "instagram-ascii",
-  "version": "1.0.1",
+  "name": "instagram-cli",
+  "version": "1.0.2",
   "description": "A Node.js CLI tool to display your Instagram feed via ASCII art.",
   "repository" : { 
     "type" : "git"
@@ -22,6 +22,6 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "instagram-ascii": "index.js"
+    "instagram-cli": "index.js"
   }
 }
