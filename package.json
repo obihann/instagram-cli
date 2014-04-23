@@ -1,7 +1,11 @@
 {
-  "name": "Instagram",
-  "version": "0.2.0",
+  "name": "instagram-ascii",
+  "version": "1.0.1",
   "description": "A Node.js CLI tool to display your Instagram feed via ASCII art.",
+  "repository" : { 
+    "type" : "git"
+    , "url" : "https://github.com/obihann/Instagram.git"
+  },
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +19,9 @@
     "moment": "~2.5.0",
     "request": "~2.31.0",
     "express": "~3.4.7"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "instagram-ascii": "index.js"
   }
 }
