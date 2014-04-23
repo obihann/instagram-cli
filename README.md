@@ -95,23 +95,27 @@ A Node.js CLI tool to display your Instagram feed via ASCII art. Inspired by [in
     a few seconds ago
     
 ##Usage
+###Installation
+
+    $ npm install instagram-cli -g
+    
 ###Public Feeds
 
-    node bin/index.js
+    $ instagram-cli
 
 ###User Feeds
 
-    node bin/index.js user obihann
+    $ instagram-cli user obihann
     
 ###Web Feeds
 
-    node bin/index.js web
+    $ instagram-cli web
     
 Then view 'http://localhost:8888/'
     
 ###Web User Feeds
 
-    node bin/index.js webUser obihann
+    $ instagram-cli webUser obihann
     
 Then view 'http://localhost:8888/'
 
